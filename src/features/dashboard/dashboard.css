@@ -1,0 +1,239 @@
+ /* Variables principales */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #f59e0b;
+  --text-color: #374151;
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --accent-color: #10b981;
+  --border-radius: 10px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+}
+
+/* Estilos generales */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Título principal */
+.dashboard-container h2 {
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.dashboard-container h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-radius: 3px;
+}
+
+/* Contenedor de botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+/* Botones */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(-2px);
+}
+
+button:nth-child(2) {
+  background-color: var(--accent-color);
+}
+
+button:nth-child(3) {
+  background-color: var(--secondary-color);
+}
+
+button:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Mensaje de error */
+.error-message {
+  background-color: #fee2e2;
+  color: #ef4444;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin: 1.5rem auto;
+  max-width: 600px;
+  text-align: center;
+  border-left: 4px solid #ef4444;
+  font-weight: 500;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Lista de restaurantes */
+.restaurant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Tarjeta de restaurante */
+.restaurant-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+  border-left: 4px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease-in-out;
+  animation-fill-mode: both;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-card:nth-child(3n+1) {
+  border-left-color: var(--primary-color);
+}
+
+.restaurant-card:nth-child(3n+2) {
+  border-left-color: var(--secondary-color);
+}
+
+.restaurant-card:nth-child(3n+3) {
+  border-left-color: var(--accent-color);
+}
+
+/* Título de restaurante */
+.restaurant-card h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+/* Información de restaurante */
+.restaurant-card p {
+  margin: 0.5rem 0;
+  color: #6b7280;
+}
+
+/* Enlace de Google Maps */
+.restaurant-card a {
+  margin-top: auto;
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding-top: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition);
+}
+
+.restaurant-card a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.restaurant-card a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.restaurant-list .restaurant-card:nth-child(1) { animation-delay: 0.1s; }
+.restaurant-list .restaurant-card:nth-child(2) { animation-delay: 0.2s; }
+.restaurant-list .restaurant-card:nth-child(3) { animation-delay: 0.3s; }
+.restaurant-list .restaurant-card:nth-child(4) { animation-delay: 0.4s; }
+.restaurant-list .restaurant-card:nth-child(5) { animation-delay: 0.5s; }
+.restaurant-list .restaurant-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .restaurant-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .restaurant-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
